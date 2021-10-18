@@ -1,0 +1,12 @@
+2021-09-21T16:34:47.803+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"accessToken":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYWNvcyIsImV4cCI6MTYzMjIzMTI4N30.ZkUiwPT8jSCmuFoOATY-EoiApuhh41JnfJEQDrGTFEU","dataId":"micro-web.json","group":"prod","tenant":"73db4e56-6b4a-4422-89bb-d5b679d2d80a"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-09-21T16:34:47.817+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"accessToken":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYWNvcyIsImV4cCI6MTYzMjIzMTI4N30.ZkUiwPT8jSCmuFoOATY-EoiApuhh41JnfJEQDrGTFEU","dataId":"micro-web.json","group":"prod","tenant":"73db4e56-6b4a-4422-89bb-d5b679d2d80a"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-09-21T16:34:47.825+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"accessToken":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYWNvcyIsImV4cCI6MTYzMjIzMTI4N30.ZkUiwPT8jSCmuFoOATY-EoiApuhh41JnfJEQDrGTFEU","dataId":"micro-web.json","group":"prod","tenant":"73db4e56-6b4a-4422-89bb-d5b679d2d80a"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-09-21T16:34:47.825+0800	[34mINFO[0m	get config from server error:[404] config data not exist
+ 
+2021-09-21T16:34:47.834+0800	[33mWARN[0m	[client.GetConfig] config not found, dataId: micro-web.json, group: prod, namespaceId: 73db4e56-6b4a-4422-89bb-d5b679d2d80a.

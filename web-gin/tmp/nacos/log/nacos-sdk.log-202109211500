@@ -1,0 +1,47 @@
+2021-09-21T15:33:25.884+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web.json","group":"dev","tenant":"e16c905e-bd10-4f62-98cb-acc78d967b59"}>, call domain error:<Get "http://10.4.7.71:8848/nacos/v1/cs/configs?group=dev&tenant=e16c905e-bd10-4f62-98cb-acc78d967b59&dataId=user-web.json": dial tcp 10.4.7.71:8848: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2021-09-21T15:33:27.893+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web.json","group":"dev","tenant":"e16c905e-bd10-4f62-98cb-acc78d967b59"}>, call domain error:<Get "http://10.4.7.71:8848/nacos/v1/cs/configs?group=dev&tenant=e16c905e-bd10-4f62-98cb-acc78d967b59&dataId=user-web.json": dial tcp 10.4.7.71:8848: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2021-09-21T15:33:29.899+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web.json","group":"dev","tenant":"e16c905e-bd10-4f62-98cb-acc78d967b59"}>, call domain error:<Get "http://10.4.7.71:8848/nacos/v1/cs/configs?dataId=user-web.json&group=dev&tenant=e16c905e-bd10-4f62-98cb-acc78d967b59": dial tcp 10.4.7.71:8848: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2021-09-21T15:33:29.899+0800	[34mINFO[0m	get config from server error:Get "http://10.4.7.71:8848/nacos/v1/cs/configs?dataId=user-web.json&group=dev&tenant=e16c905e-bd10-4f62-98cb-acc78d967b59": dial tcp 10.4.7.71:8848: connectex: No connection could be made because the target machine actively refused it. 
+2021-09-21T15:33:29.899+0800	[31mERROR[0m	get config from cache  error:failed to read config cache file:tmp/nacos/cache\config\user-web.json@@dev@@e16c905e-bd10-4f62-98cb-acc78d967b59,err:open tmp/nacos/cache\config\user-web.json@@dev@@e16c905e-bd10-4f62-98cb-acc78d967b59: The system cannot find the path specified.  
+2021-09-21T15:43:52.064+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev1ba85bafb5ea24dd3cdbad3a59bf884873db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-09-21T15:43:52.080+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:43:52.091+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev1ba85bafb5ea24dd3cdbad3a59bf884873db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:44:21.613+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:44:21.624+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev1ba85bafb5ea24dd3cdbad3a59bf884873db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:44:51.129+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:44:51.141+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev1ba85bafb5ea24dd3cdbad3a59bf884873db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:45:20.646+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:45:20.656+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev1ba85bafb5ea24dd3cdbad3a59bf884873db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:45:50.162+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:45:50.174+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev1ba85bafb5ea24dd3cdbad3a59bf884873db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:46:02.143+0800	[34mINFO[0m	[client.ListenConfig] config changed:micro-web.json%02dev%0273db4e56-6b4a-4422-89bb-d5b679d2d80a%01
+
+2021-09-21T15:46:02.163+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:46:39.669+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-09-21T15:46:39.679+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:46:39.691+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:47:09.198+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:47:09.209+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:47:38.717+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:47:38.727+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:49:58.358+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-09-21T15:49:58.372+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:49:58.383+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-21T15:53:18.626+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-09-21T15:53:18.639+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-21T15:53:18.649+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:micro-web.jsondev21904b126131fe00c61df0535fd1c5a973db4e56-6b4a-4422-89bb-d5b679d2d80a tenant:73db4e56-6b4a-4422-89bb-d5b679d2d80a] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
