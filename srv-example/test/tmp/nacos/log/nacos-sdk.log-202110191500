@@ -1,0 +1,18 @@
+2021-10-19T15:28:47.656+0800	[34mINFO[0m	udp server start, port: 55093
+2021-10-19T15:28:47.713+0800	[34mINFO[0m	Local IP:192.168.106.1
+2021-10-19T15:28:47.723+0800	[33mWARN[0m	instance list is empty,json string:{"name":"dev@@gomicrom-srv","groupName":"dev","clusters":"","cacheMillis":10000,"hosts":[],"lastRefTime":1634628527718,"checksum":"","allIPs":false,"reachProtectionThreshold":false,"valid":true}
+2021-10-19T15:28:47.723+0800	[34mINFO[0m	service not found in cache dev@@gomicrom-srv
+2021-10-19T15:29:15.305+0800	[31mERROR[0m	login has error Post "http://10.4.7.71:50051/nacos/v1/auth/users/login": dial tcp 10.4.7.71:50051: connectex: No connection could be made because the target machine actively refused it.
+2021-10-19T15:29:15.307+0800	[34mINFO[0m	udp server start, port: 55507
+2021-10-19T15:29:15.341+0800	[34mINFO[0m	Local IP:192.168.106.1
+2021-10-19T15:29:17.353+0800	[31mERROR[0m	api</v1/ns/instance/list>,method:<GET>, params:<{"app":"","clientIP":"192.168.106.1","clusters":"","healthyOnly":"false","namespaceId":"b79d1500-d143-447d-873a-4d545e3d186c","serviceName":"dev@@gomicrom-srv","udpPort":"55507"}>, call domain error:<Get "http://10.4.7.71:50051/nacos/v1/ns/instance/list?udpPort=55507&healthyOnly=false&clientIP=192.168.106.1&namespaceId=b79d1500-d143-447d-873a-4d545e3d186c&serviceName=dev@@gomicrom-srv&app=&clusters=": dial tcp 10.4.7.71:50051: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2021-10-19T15:29:19.372+0800	[31mERROR[0m	api</v1/ns/instance/list>,method:<GET>, params:<{"app":"","clientIP":"192.168.106.1","clusters":"","healthyOnly":"false","namespaceId":"b79d1500-d143-447d-873a-4d545e3d186c","serviceName":"dev@@gomicrom-srv","udpPort":"55507"}>, call domain error:<Get "http://10.4.7.71:50051/nacos/v1/ns/instance/list?namespaceId=b79d1500-d143-447d-873a-4d545e3d186c&serviceName=dev@@gomicrom-srv&app=&clusters=&udpPort=55507&healthyOnly=false&clientIP=192.168.106.1": dial tcp 10.4.7.71:50051: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2021-10-19T15:29:21.386+0800	[31mERROR[0m	api</v1/ns/instance/list>,method:<GET>, params:<{"app":"","clientIP":"192.168.106.1","clusters":"","healthyOnly":"false","namespaceId":"b79d1500-d143-447d-873a-4d545e3d186c","serviceName":"dev@@gomicrom-srv","udpPort":"55507"}>, call domain error:<Get "http://10.4.7.71:50051/nacos/v1/ns/instance/list?app=&clusters=&udpPort=55507&healthyOnly=false&clientIP=192.168.106.1&namespaceId=b79d1500-d143-447d-873a-4d545e3d186c&serviceName=dev@@gomicrom-srv": dial tcp 10.4.7.71:50051: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2021-10-19T15:29:21.386+0800	[31mERROR[0m	QueryList return error!serviceName:dev@@gomicrom-srv cluster: err:retry 3 times request failed!
+2021-10-19T15:33:12.433+0800	[34mINFO[0m	udp server start, port: 55426
+2021-10-19T15:33:12.470+0800	[34mINFO[0m	Local IP:192.168.106.1
+2021-10-19T15:33:12.475+0800	[33mWARN[0m	instance list is empty,json string:{"name":"dev@@gomicrom-srv","groupName":"dev","clusters":"","cacheMillis":10000,"hosts":[],"lastRefTime":1634628792473,"checksum":"","allIPs":false,"reachProtectionThreshold":false,"valid":true}
+2021-10-19T15:33:12.475+0800	[34mINFO[0m	service not found in cache dev@@gomicrom-srv
+2021-10-19T15:42:25.597+0800	[34mINFO[0m	udp server start, port: 55438
+2021-10-19T15:42:25.632+0800	[34mINFO[0m	Local IP:192.168.106.1
+2021-10-19T15:42:25.636+0800	[34mINFO[0m	service not found in cache prod@@gomicrom-srv
