@@ -7,7 +7,9 @@ ENV VERSION 1.0
 WORKDIR /apps
 
 # 拷贝当前执行文件到项目中
-COPY web-example/web-example /apps/
+WORKDIR /apps
+COPY . .
+RUN go build .
 
 # 拷贝配置文件到容器中
 COPY web-example/config-dev.yaml /apps/config-dev.yaml
