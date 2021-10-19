@@ -1,9 +1,10 @@
 package ceshi
 
 import (
-	"github.com/gin-gonic/gin"
-	//"web-gin/amqp/producer"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	//"web-example/amqp/producer"
 )
 
 func SendMq(ctx *gin.Context)  {

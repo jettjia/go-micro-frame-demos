@@ -2,13 +2,13 @@
     "name":"gomicrom-web",
     "host":"10.4.7.71",
     "port":8021,
-    "env":"dev",
+    "env":"prod",
     "tags":[
         "gomicrom",
         "web"
     ],
     "logger":{
-        "logFilePath":"./tmp/logs/web-example.log",
+        "logFilePath":"./tmp/logs/go-micro-frame-web.log",
         "logLevel":"debug",
         "maxSize":128,
         "maxBackups":30,

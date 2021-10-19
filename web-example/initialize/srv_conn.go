@@ -1,24 +1,18 @@
 package initialize
 
 import (
-	"go.uber.org/zap"
+	"github.com/jettjia/go-micro-frame/core/register/nacos"
+	mylogger "github.com/jettjia/go-micro-frame/service/logger"
 
-	"microframe.com/nacos"
-	"web-gin/global"
-	"web-gin/proto"
+	"web-example/global"
+	"web-example/proto"
 )
 
 func InitSrvConn() {
-	nc := nacos.NacosClient{
-		Host:      global.NacosConfig.Host,
-		Port:      global.NacosConfig.Port,
-		Namespace: global.NacosConfig.Namespace,
-		User:      global.NacosConfig.User,
-		Password:  global.NacosConfig.Password,
-	}
-	userConn, err := nc.Discovery(nc, global.ServerConfig.UserSrvInfo.Name, global.ServerConfig.Env)
+	c := nacos.NewRegistryClient(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password)
+	userConn, err := c.Discovery(global.ServerConfig.UserSrvInfo.Name, global.ServerConfig.Env)
 	if err != nil {
-		zap.S().Fatal("[InitSrvConn] 连接 【用户服务失败】")
+		mylogger.Fatal("[InitSrvConn] 连接 【用户服务失败】")
 	}
 
 	userSrvClient := proto.NewUserClient(userConn)

@@ -2,8 +2,9 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"web-gin/api/user"
-	"web-gin/middlewares"
+
+	"web-example/api/user"
+	"web-example/middlewares"
 )
 
 func InitUserRouter(Router *gin.RouterGroup){

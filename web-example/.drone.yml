@@ -50,7 +50,7 @@ steps:
       script:
         - docker login -u admin -p Harbor12345 10.4.7.100:85
         - docker pull 10.4.7.100:85/test/my-go-micro-web:latest
-        - list=$(docker ps -a| grep web-gin | awk '{print $1}')
+        - list=$(docker ps -a| grep web-example | awk '{print $1}')
         - test "$list" = "" && echo "none my-go-micro-web containers running" || docker stop $list
         - docker rm $list
         - docker run -p 8021:8021 -d -v /data/my-go-micro-web:/apps/logs 10.4.7.100:85/test/my-go-micro-web:latest

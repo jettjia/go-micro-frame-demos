@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/jettjia/go-micro-frame/core/config/nacos"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
-	"web-gin/global"
-	"microframe.com/nacos"
+	"web-example/global"
 )
 
 func GetEnvInfo(env string) bool {
@@ -38,8 +38,8 @@ func InitConfig() {
 		}
 
 		// 读取远程nacos的配置内容
-		content, err := nacos.GetClientContent(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password,
-			global.NacosConfig.DataId, global.NacosConfig.Group)
+		c := nacos.NewConfigClient(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password)
+		content, err := c.GetConfig(global.NacosConfig.DataId, global.NacosConfig.Group)
 		if err != nil {
 			zap.S().Errorf("读取远程nacos配置信息失败: %s", err.Error())
 		}
@@ -69,6 +69,4 @@ func InitConfig() {
 	//}
 
 	zap.S().Infof("从nacos读取到的全部配置如下：", global.ServerConfig)
-	////////////////////////////////
-
 }

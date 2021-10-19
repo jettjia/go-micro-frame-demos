@@ -2,12 +2,13 @@ package middlewares
 
 import (
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"
 	jaegercfg "github.com/uber/jaeger-client-go/config"
 
-	"web-gin/global"
+	"web-example/global"
 )
 
 func Trace() gin.HandlerFunc{

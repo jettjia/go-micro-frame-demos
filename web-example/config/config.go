@@ -41,8 +41,8 @@ type ServerConfig struct {
 	UserSrvInfo UserSrvConfig `mapstructure:"user_srv" json:"user_srv"`
 	RedisInfo   RedisConfig   `mapstructure:"redis" json:"redis"`
 	ConsulInfo  ConsulConfig  `mapstructure:"consul" json:"consul"`
-	JaegerInfo  JaegerConfig   `mapstructure:"consul" json:"jaeger"`
-	LoggerInfo  LoggerConfig `mapstructure:"logger" json:"logger"`
+	JaegerInfo  JaegerConfig  `mapstructure:"consul" json:"jaeger"`
+	LoggerInfo  LoggerConfig  `mapstructure:"logger" json:"logger"`
 }
 
 type NacosConfig struct {

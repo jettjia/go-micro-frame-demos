@@ -2,8 +2,9 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"web-gin/api/ceshi"
-	"web-gin/middlewares"
+
+	"web-example/api/ceshi"
+	"web-example/middlewares"
 )
 
 func InitTestRouter(Router *gin.RouterGroup){

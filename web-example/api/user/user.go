@@ -2,7 +2,7 @@ package user
 
 import (
 	"context"
-	"web-gin/api"
+	"web-example/api"
 	"net/http"
 	"strconv"
 	"time"
@@ -10,9 +10,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 
-	"web-gin/global"
-	reponse "web-gin/global/response"
-	"web-gin/proto"
+	"web-example/global"
+	reponse "web-example/global/response"
+	"web-example/proto"
 )
 
 func GetUserList(ctx *gin.Context) {

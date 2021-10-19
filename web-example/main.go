@@ -5,16 +5,18 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"web-example/util/externalIP"
 
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 
-	mylogger "microframe.com/logger"
-	"microframe.com/nacos"
-	"web-gin/global"
-	"web-gin/initialize"
+	"github.com/jettjia/go-micro-frame/core/register/nacos"
+	mylogger "github.com/jettjia/go-micro-frame/service/logger"
+
+	"web-example/global"
+	"web-example/initialize"
 )
 
 func main() {
@@ -36,7 +38,7 @@ func main() {
 
 	//// 如果是生产环境，读取本机的IP
 	if global.ServerConfig.Env == "prod" {
-		eIP, err := nacos.ExternalIP()
+		eIP, err := externalIP.ExternalIP()
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -44,14 +46,9 @@ func main() {
 	}
 
 	//服务注册到nacos
-	nc := nacos.NacosClient{
-		Host:      global.NacosConfig.Host,
-		Port:      global.NacosConfig.Port,
-		Namespace: global.NacosConfig.Namespace,
-		User:      global.NacosConfig.User,
-		Password:  global.NacosConfig.Password,
-	}
-	err := nc.Register(nc, global.ServerConfig.Host, uint64(global.ServerConfig.Port), global.ServerConfig.Name, 10, global.ServerConfig.Env)
+	client := nacos.NewRegistryClient(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password)
+
+	err := client.Register(global.ServerConfig.Host, uint64(global.ServerConfig.Port), global.ServerConfig.Name, global.ServerConfig.Env,10)
 	if err != nil {
 		zap.S().Panic("服务注册失败:", err.Error())
 	}
@@ -73,7 +70,7 @@ func main() {
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	if err = nc.DelRegister(nc, global.ServerConfig.Host, uint64(global.ServerConfig.Port), global.ServerConfig.Name, global.ServerConfig.Env); err != nil {
+	if err = client.DelRegister(global.ServerConfig.Host, uint64(global.ServerConfig.Port), global.ServerConfig.Name, global.ServerConfig.Env); err != nil {
 		zap.S().Info("注销失败:", err.Error())
 	} else {
 		zap.S().Info("注销成功")

@@ -1,8 +1,9 @@
 package initialize
 
 import (
-	"web-gin/global"
-	"microframe.com/logger"
+	"github.com/jettjia/go-micro-frame/service/logger"
+
+	"web-example/global"
 )
 
 // mylogger 自定义logger也启动
