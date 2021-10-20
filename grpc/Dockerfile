@@ -1,27 +1,36 @@
 # 表示依赖 alpine 最新版
-FROM alpine:latest
+FROM golang:1.16 AS build
 MAINTAINER jettjia <jettjia@qq.com>
-ENV VERSION 1.0
 
-# 在容器根目录 创建一个 apps 目录
-WORKDIR /apps
+ENV GO111MODULE=on \
+    CGO_ENABLED=0 \
+    GOOS=linux \
+    GOARCH=amd64 \
+	GOPROXY="https://goproxy.cn,direct"
 
-# 拷贝当前执行文件到项目中
-COPY grpc/go-micro-frame /apps/
+WORKDIR /go/src/goods-srv/
 
-# 拷贝配置文件到容器中
-COPY grpc/config-dev.yaml /apps/config-dev.yaml
-COPY grpc/config-prod.yaml /apps/config-prod.yaml
+# 复制源码并执行build，此处当文件有变化会产生新的一层镜像层
+COPY . /go/src/goods-srv/
+## 拷贝配置文件到容器中
+COPY config-dev.yaml /go/src/goods-srv/config-dev.yaml
+COPY config-prod.yaml /go/src/goods-srv/config-prod.yaml
+
+# 安装依赖包
+RUN go mod tidy
+
+RUN go build -o /bin/goods-srv
+
+# 缩小到一层镜像
+FROM busybox
+COPY --from=build /bin/goods-srv /bin/goods-srv
+
+# 暴露端口
+EXPOSE 50051
 
 # 设置时区为上海
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo 'Asia/Shanghai' >/etc/timezone
 
-# 设置编码
-ENV LANG C.UTF-8
-
-# 暴露端口
-EXPOSE 50051
-
 # 运行golang程序的命令
-ENTRYPOINT ["/apps/go-micro-frame"]
+ENTRYPOINT ["/bin/goods-srv"]
