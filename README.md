@@ -1,5 +1,14 @@
-go-micro-frame 框架使用案例
+# go-micro-frame框架
 
-grpc: 使用 go-m icro-frame 框架实现的 grpc server层
+srv-example
 
-web: 使用 go-micro-frame 框架实现的 grpc web层
+```
+使用go-micro-frame框架，实现的 srv 案例
+```
+
+
+web-example
+
+```
+使用gin，结合 go-micro-frame框架，实现的 web 案例
+```
