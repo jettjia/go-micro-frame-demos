@@ -6,7 +6,7 @@ require (
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-playground/universal-translator v0.18.0
 	github.com/go-playground/validator/v10 v10.9.0
-	github.com/jettjia/go-micro-frame v1.2.4
+	github.com/jettjia/go-micro-frame v1.2.5
 	github.com/mbobakov/grpc-consul-resolver v1.4.4
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/satori/go.uuid v1.2.0
