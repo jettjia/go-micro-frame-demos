@@ -1,5 +1,8 @@
 .idea/
 .git/
 srv-example/.idea/
+web-example/.idea/
+srv-example/tmp/
+web-example/tmp/
 
 
