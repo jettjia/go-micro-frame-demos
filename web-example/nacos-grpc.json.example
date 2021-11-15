@@ -1,6 +1,6 @@
 {
     "name":"gomicrom-web",
-    "host":"10.4.7.71",
+    "host":"192.168.1.164",
     "port":8021,
     "env":"dev",
     "tags":[
