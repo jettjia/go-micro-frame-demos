@@ -1,25 +1,31 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
-	"web-example/util/externalIP"
 
+	"github.com/jettjia/go-micro-frame/core/register/register"
+	mylogger "github.com/jettjia/go-micro-frame/service/logger"
+	microExtertalIp "github.com/jettjia/go-micro-frame/tool/external_ip"
+	microFreePort "github.com/jettjia/go-micro-frame/tool/free_port"
+	"github.com/jinzhu/copier"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
-
-	"github.com/jettjia/go-micro-frame/core/register/nacos"
-	mylogger "github.com/jettjia/go-micro-frame/service/logger"
 
 	"web-example/global"
 	"web-example/initialize"
 )
 
 func main() {
+	IP := flag.String("ip", "0.0.0.0", "ip地址")
+	Port := flag.Int("port", 0, "端口")
+	flag.Parse()
+
 	// 初始化web
 	initialize.InitWeb()
 
@@ -27,28 +33,35 @@ func main() {
 	Router := initialize.Routers()
 
 	/////////////////////////////////////////////
-	// 随机生成 port, 如果是本地开发环境端口号固定，线上环境启动获取端口号
-	//if global.ServerConfig.Env != "dev" {
-	//	global.ServerConfig.Port, _ = publicUtil.GetFreePort()
-	//}
-
 	//注册服务健康检查
 	grpcServer := grpc.NewServer()
 	grpc_health_v1.RegisterHealthServer(grpcServer, health.NewServer())
 
 	//// 如果是生产环境，读取本机的IP
+	// 如果是生产环境，读取本机的IP
 	if global.ServerConfig.Env == "prod" {
-		eIP, err := externalIP.ExternalIP()
+		eIp, err := microExtertalIp.ExternalIP()
 		if err != nil {
-			fmt.Println(err)
+			mylogger.Error(err, mylogger.Any("prod环境：", "获取IP错误"))
 		}
-		global.ServerConfig.Host = eIP.String()
+		global.ServerConfig.RegisterInfo.ServiceHost = eIp.String()
+
+		ePort, err := microFreePort.GetFreePort()
+		if err != nil {
+			mylogger.Error(err, mylogger.Any("prod环境：", "获取Port错误"))
+		}
+		global.ServerConfig.RegisterInfo.ServicePort = ePort
+	} else if global.ServerConfig.Env == "debug" {
+		global.ServerConfig.RegisterInfo.ServiceHost = *IP
+		global.ServerConfig.RegisterInfo.ServicePort = *Port
 	}
 
 	//服务注册到nacos
-	client := nacos.NewRegistryClient(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password)
+	reg := register.Reg{}
+	copier.Copy(&reg, &global.ServerConfig.RegisterInfo)
+	client := register.NewRegClient(reg)
 
-	err := client.Register(global.ServerConfig.Host, uint64(global.ServerConfig.Port), global.ServerConfig.Name, global.ServerConfig.Env,10)
+	err := client.Register()
 	if err != nil {
 		zap.S().Panic("服务注册失败:", err.Error())
 	}
@@ -56,12 +69,11 @@ func main() {
 	/////////////////////////////////////////////
 
 	// 启动 web服务
-	zap.S().Debugf("启动grpc服务IP： %s", global.ServerConfig.Host)
-	zap.S().Debugf("启动web服务的端口： %d", global.ServerConfig.Port)
-	mylogger.Info("", mylogger.Any("启动web服务端口,Host:", global.ServerConfig.Host))
-	mylogger.Info("", mylogger.Any("启动web服务端口,port:", global.ServerConfig.Port))
+	mylogger.Info("", mylogger.Any("main函数从nacos读取到的配置:", global.ServerConfig))
+	mylogger.Info("", mylogger.Any("启动web服务Host:", global.ServerConfig.RegisterInfo.ServiceHost))
+	mylogger.Info("", mylogger.Any("启动web服务Port:", global.ServerConfig.RegisterInfo.ServicePort))
 	go func() {
-		if err := Router.Run(fmt.Sprintf(":%d", global.ServerConfig.Port)); err != nil {
+		if err := Router.Run(fmt.Sprintf(":%d", global.ServerConfig.RegisterInfo.ServicePort)); err != nil {
 			zap.S().Panic("启动失败:", err.Error())
 		}
 	}()
@@ -70,9 +82,9 @@ func main() {
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	if err = client.DelRegister(global.ServerConfig.Host, uint64(global.ServerConfig.Port), global.ServerConfig.Name, global.ServerConfig.Env); err != nil {
-		zap.S().Info("注销失败:", err.Error())
+	if err = client.DelRegister(); err != nil {
+		mylogger.Info("", mylogger.Any("注销失败:", err.Error()))
 	} else {
-		zap.S().Info("注销成功")
+		mylogger.Info("", mylogger.Any("注销成功:", "success"))
 	}
 }

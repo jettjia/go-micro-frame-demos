@@ -1,12 +1,37 @@
 {
-    "name":"gomicrom-web",
-    "host":"192.168.1.164",
-    "port":8021,
     "env":"dev",
-    "tags":[
-        "gomicrom",
-        "web"
-    ],
+    "user_srv":{
+        "typ":"nacos",
+        "host":"10.4.7.71",
+        "port":8848,
+        "user":"nacos",
+        "password":"nacos",
+        "serviceHost":"192.168.106.1",
+        "servicePort":50051,
+        "serviceName":"gomicrom-srv",
+        "groupName":"dev",
+        "weight":10,
+        "tags":[
+            "gomicrom",
+            "srv"
+        ]
+    },
+    "register":{
+        "typ":"nacos",
+        "host":"10.4.7.71",
+        "port":8848,
+        "user":"nacos",
+        "password":"nacos",
+        "serviceHost":"192.168.106.1",
+        "servicePort":8081,
+        "serviceName":"gomicrom-web",
+        "groupName":"dev",
+        "weight":10,
+        "tags":[
+            "gomicrom",
+            "web"
+        ]
+    },
     "logger":{
         "logFilePath":"./tmp/logs/web-example.log",
         "logLevel":"debug",
@@ -14,18 +39,9 @@
         "maxBackups":30,
         "maxAge":30
     },
-    "user_srv":{
-        "host":"10.4.7.71",
-        "port":50051,
-        "name":"gomicrom-srv"
-    },
     "redis":{
         "host":"127.0.0.1",
         "port":6379
-    },
-    "consul":{
-        "host":"10.4.7.71",
-        "port":8500
     },
     "jaeger":{
         "host":"10.4.7.71",

@@ -4,9 +4,9 @@ go 1.16
 
 require (
 	github.com/go-redsync/redsync/v4 v4.3.0
-	github.com/jettjia/go-micro-frame v1.2.5
+	github.com/jettjia/go-micro-frame v1.2.9
+	github.com/jinzhu/copier v0.3.4
 	github.com/jinzhu/gorm v1.9.16
-	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/olivere/elastic/v7 v7.0.29
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/spf13/viper v1.9.0

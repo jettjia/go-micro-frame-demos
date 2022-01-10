@@ -1,55 +1,60 @@
 {
-	"name": "gomicrom-srv",
-	"host": "192.168.1.164",
-	"port": 50051,
-	"env" : "dev",
-	"tags": [
-		"gomicrom",
-		"srv"
-	],
-	"logger" : {
-	    "logFilePath": "./tmp/logs/srv-example.log",
-	    "logLevel" : "debug",
-	    "maxSize" : 128,
-	    "maxBackups" : 30,
-	    "maxAge": 30
-	},
-	"mysql": {
-		"host": "10.4.7.71",
-		"port": 3307,
-		"user": "root",
-		"password": "root",
-		"db": "gomicrom_srv",
-		"maxIdleConns": 10,
-		"maxOpenConns": 100,
-		"maxLifetime": 20
-	},
-	"redis": {
-		"host": "10.4.7.71",
-		"port": 6379,
-		"password": ""
-	},
-	"consul": {
-		"host": "10.4.7.71",
-		"port": 8500
-	},
-	"jaeger": {
-		"host": "10.4.7.71",
-		"port": 6831,
-		"name": "gomicrom",
-		"user": "",
-        "password": ""
-	},
-	"amqp": {
-		"host": "10.4.7.71",
-		"port": 5672,
-		"user": "admin",
-		"password": "123456"
-	},
-	"es": {
-		"host": "10.4.7.71",
-		"port": 9200,
-		"user": "elastic",
-		"password": "hZksYkpkcweABXu68qh0"
-	}
+    "env":"dev",
+    "register":{
+        "typ":"nacos",
+        "host":"10.4.7.71",
+        "port":8848,
+        "user":"nacos",
+        "password":"nacos",
+        "serviceHost":"192.168.106.1",
+        "servicePort":50051,
+        "serviceName":"gomicrom-srv",
+        "groupName":"dev",
+        "weight":10,
+        "tags":[
+            "gomicrom",
+            "srv"
+        ]
+    },
+    "logger":{
+        "logFilePath":"./tmp/logs/srv-example.log",
+        "logLevel":"debug",
+        "maxSize":128,
+        "maxBackups":30,
+        "maxAge":30
+    },
+    "mysql":{
+        "host":"10.4.7.71",
+        "port":3307,
+        "user":"root",
+        "password":"root",
+        "db":"gomicrom_srv",
+        "maxIdleConns":10,
+        "maxOpenConns":100,
+        "maxLifetime":20
+    },
+    "redis":{
+        "host":"10.4.7.71",
+        "port":6379,
+        "password":""
+    },
+    "jaeger":{
+        "host":"10.4.7.71",
+        "port":6831,
+        "name":"gomicrom",
+        "user":"",
+        "password":""
+    },
+    "amqp":{
+        "host":"10.4.7.71",
+        "port":5672,
+        "user":"admin",
+        "password":"123456"
+    },
+    "es":{
+        "host":"10.4.7.71",
+        "port":9200,
+        "user":"elastic",
+        "password":"hZksYkpkcweABXu68qh0"
+    }
 }

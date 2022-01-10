@@ -1,4 +1,4 @@
-package externalIP
+package external_IP
 
 import (
 	"errors"

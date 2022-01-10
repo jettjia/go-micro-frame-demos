@@ -1,20 +1,39 @@
 package config
 
+// 服务注册和发现
+type RegisterConfig struct {
+	Typ         string   `mapstructure:"typ" json:"typ"`                 // 类型：nacos, consul
+	Host        string   `mapstructure:"host" json:"host"`               // nacos或consul地址
+	Port        int      `mapstructure:"port" json:"port"`               // nacos或consul port
+	User        string   `mapstructure:"user" json:"user"`               // nacos的user
+	Password    string   `mapstructure:"password" json:"password"`       // nacos的password
+	ServiceHost string   `mapstructure:"serviceHost" json:"serviceHost"` // 服务的host
+	ServicePort int      `mapstructure:"servicePort" json:"servicePort"` // 服务的port
+	ServiceName string   `mapstructure:"serviceName" json:"serviceName"` // 服务的名称
+	GroupName   string   `mapstructure:"groupName" json:"groupName"`     // nacos的group
+	Weight      float64  `mapstructure:"weight" json:"weight"`           // nacos的weight
+	Tags        []string `mapstructure:"tags" json:"tags"`               // consul的tags
+}
+
+// User服务
 type UserSrvConfig struct {
-	Host string `mapstructure:"host" json:"host"`
-	Port int    `mapstructure:"port" json:"port"`
-	Name string `mapstructure:"name" json:"name"`
+	Typ         string   `mapstructure:"typ" json:"typ"`                 // 类型：nacos, consul
+	Host        string   `mapstructure:"host" json:"host"`               // nacos或consul地址
+	Port        int      `mapstructure:"port" json:"port"`               // nacos或consul port
+	User        string   `mapstructure:"user" json:"user"`               // nacos的user
+	Password    string   `mapstructure:"password" json:"password"`       // nacos的password
+	ServiceHost string   `mapstructure:"serviceHost" json:"serviceHost"` // 服务的host
+	ServicePort int      `mapstructure:"servicePort" json:"servicePort"` // 服务的port
+	ServiceName string   `mapstructure:"serviceName" json:"serviceName"` // 服务的名称
+	GroupName   string   `mapstructure:"groupName" json:"groupName"`     // nacos的group
+	Weight      float64  `mapstructure:"weight" json:"weight"`           // nacos的weight
+	Tags        []string `mapstructure:"tags" json:"tags"`               // consul的tags
 }
 
 type RedisConfig struct {
 	Host   string `mapstructure:"host" json:"host"`
 	Port   int    `mapstructure:"port" json:"port"`
 	Expire int    `mapstructure:"expire" json:"expire"`
-}
-
-type ConsulConfig struct {
-	Host string `mapstructure:"host" json:"host"`
-	Port int    `mapstructure:"port" json:"port"`
 }
 
 type JaegerConfig struct {
@@ -32,17 +51,12 @@ type LoggerConfig struct {
 }
 
 type ServerConfig struct {
-	Name string   `mapstructure:"name" json:"name"`
-	Host string   `mapstructure:"host" json:"host"`
-	Tags []string `mapstructure:"tags" json:"tags"`
-	Port int      `mapstructure:"port" json:"port"`
-	Env  string   `mapstructure:"env" json:"env"`
-
-	UserSrvInfo UserSrvConfig `mapstructure:"user_srv" json:"user_srv"`
-	RedisInfo   RedisConfig   `mapstructure:"redis" json:"redis"`
-	ConsulInfo  ConsulConfig  `mapstructure:"consul" json:"consul"`
-	JaegerInfo  JaegerConfig  `mapstructure:"consul" json:"jaeger"`
-	LoggerInfo  LoggerConfig  `mapstructure:"logger" json:"logger"`
+	Env          string         `mapstructure:"env" json:"env"`
+	RegisterInfo RegisterConfig `mapstructure:"register" json:"register"`
+	UserSrvInfo  UserSrvConfig  `mapstructure:"user_srv" json:"user_srv"`
+	RedisInfo    RedisConfig    `mapstructure:"redis" json:"redis"`
+	JaegerInfo   JaegerConfig   `mapstructure:"consul" json:"jaeger"`
+	LoggerInfo   LoggerConfig   `mapstructure:"logger" json:"logger"`
 }
 
 type NacosConfig struct {

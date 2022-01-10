@@ -11,7 +11,7 @@ var ClientConn *grpc.ClientConn
 
 func InitClient() {
 	var err error
-	ClientConn, err = grpc.Dial("10.4.7.71:50051", grpc.WithInsecure())
+	ClientConn, err = grpc.Dial("192.168.106.1:50051", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}

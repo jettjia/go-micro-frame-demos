@@ -37,7 +37,6 @@ func InitConfig() {
 		if err := v.Unmarshal(&global.NacosConfig); err != nil {
 			panic(err)
 		}
-
 		// 读取远程nacos的配置内容
 		c := nacos.NewConfigClient(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password)
 		content, err := c.GetConfig(global.NacosConfig.DataId, global.NacosConfig.Group)
@@ -74,5 +73,5 @@ func InitConfig() {
 	//		zap.S().Errorf("配置中心文件变化，解析失败!")
 	//	}
 	//}
-	zap.S().Infof("initConfig从远程nacos读取的配置信息是：", &global.ServerConfig)
+	//zap.S().Infof("initConfig从远程nacos读取的配置信息是：", &global.ServerConfig)
 }

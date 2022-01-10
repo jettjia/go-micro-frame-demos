@@ -1,16 +1,20 @@
 package initialize
 
 import (
-	"github.com/jettjia/go-micro-frame/core/register/nacos"
+	"github.com/jettjia/go-micro-frame/core/register/register"
 	mylogger "github.com/jettjia/go-micro-frame/service/logger"
+	"github.com/jinzhu/copier"
 
 	"web-example/global"
 	"web-example/proto"
 )
 
 func InitSrvConn() {
-	c := nacos.NewRegistryClient(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password)
-	userConn, err := c.Discovery(global.ServerConfig.UserSrvInfo.Name, global.ServerConfig.Env)
+	reg := register.Reg{}
+	copier.Copy(&reg, &global.ServerConfig.UserSrvInfo)
+
+	c := register.NewRegClient(reg)
+	userConn, err := c.Discovery()
 	if err != nil {
 		mylogger.Fatal("[InitSrvConn] 连接 【用户服务失败】")
 	}

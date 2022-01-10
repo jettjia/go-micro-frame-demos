@@ -1,3 +1,0 @@
-{"level":"debug","time":"2021-10-19 16-10-01.829","line":"/mnt/hgfs/go_work/wingopath/go-micro-frame-demos/web-example/initialize/mylogger.go:15","msg":"初始化日志","app":"gomicrom-web"}
-{"level":"info","time":"2021-10-19 16-10-01.941","line":"/mnt/hgfs/go_work/wingopath/go-micro-frame-demos/web-example/main.go:61","msg":"","app":"gomicrom-web","启动web服务端口,Host:":"10.4.7.71"}
-{"level":"info","time":"2021-10-19 16-10-01.942","line":"/mnt/hgfs/go_work/wingopath/go-micro-frame-demos/web-example/main.go:62","msg":"","app":"gomicrom-web","启动web服务端口,port:":8021}
